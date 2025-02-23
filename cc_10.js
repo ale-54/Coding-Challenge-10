@@ -19,3 +19,21 @@ console.log(prod1.getDetails()); //Product: Laptop, ID: 101, Price: $1200, Stock
 
 prod1.updateStock(3); //stock: 10-3 = 7
 console.log(prod1.getDetails()); //Product: Laptop, ID: 101, Price: $1200, Stock: 7
+
+//Task 2: Creating an Order Class
+class Order {
+    constructor(orderId, product, quantity) {
+        this.orderId = orderId;
+        this.product = product;
+        this.quantity = quantity;
+        this.totalPrice = product.price * quantity; //calculating total price
+        this.product.updateStock(this.quantity);
+    }; //order class
+    getOrderDetails() {
+        return `Order ID: ${this.orderId}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.totalPrice}`;
+    }; //order details
+};
+
+const order1 = new Order(501, prod1, 2);
+console.log(order1.getOrderDetails()); //Order ID: 501, Product: Laptop, Quantity: 2, Total Price: $2400
+console.log(prod1.getDetails()); //Product: Laptop, ID: 101, Price: $1200, Stock: 5 (Stock reduced)
