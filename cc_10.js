@@ -37,3 +37,20 @@ class Order {
 const order1 = new Order(501, prod1, 2);
 console.log(order1.getOrderDetails()); //Order ID: 501, Product: Laptop, Quantity: 2, Total Price: $2400
 console.log(prod1.getDetails()); //Product: Laptop, ID: 101, Price: $1200, Stock: 5 (Stock reduced)
+
+//Task 3: Creating an Inventory Class
+class Inventory {
+    constructor() {
+        this.products = []; //array of products
+    };
+    addProduct(product) {
+        this.products.push(product); //adding a new product to inventory
+    };
+    listProducts() {
+        return this.products.forEach(product => {console.log(order1.getOrderDetails())});
+    }; //logging product details
+};
+
+const inventory = new Inventory();
+inventory.addProduct(prod1);
+inventory.listProducts(); //Product: Laptop, ID: 101, Price: $1200, Stock: 5
