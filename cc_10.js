@@ -42,6 +42,7 @@ console.log(prod1.getDetails()); //Product: Laptop, ID: 101, Price: $1200, Stock
 class Inventory {
     constructor() {
         this.products = []; //array of products
+        this.orders = []; //array of orders (task 4)
     };
     addProduct(product) {
         this.products.push(product); //adding a new product to inventory
@@ -49,8 +50,24 @@ class Inventory {
     listProducts() {
         return this.products.forEach(product => {console.log(order1.getOrderDetails())});
     }; //logging product details
+
+//Task 4: Implementing Order Management
+    placeOrder(orderId, product, quantity) {
+        if (product.stock >= quantity) {
+            const newOrder = new Order(orderId, product, quantity);
+            return this.orders.push(newOrder);
+        }; //creates new order and adds to "orders" if available
+    };
+    listOrders() {
+        this.orders.forEach(order => {console.log(order.getOrderDetails())});
+    }; //logs all placed orders
 };
 
 const inventory = new Inventory();
 inventory.addProduct(prod1);
 inventory.listProducts(); //Product: Laptop, ID: 101, Price: $1200, Stock: 5
+
+//Task 4: Implementing Order Management
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders(); //Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400
+console.log(prod1.getDetails()); //Product: Laptop, ID: 101, Price: $1200, Stock: 3
